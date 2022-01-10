@@ -1,0 +1,386 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	max-height: 100vh;
+	overflow: hidden;
+}
+
+main {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 2fr 1fr 0px;
+	grid-template-rows: 30px 35px 1fr;
+	grid-template-areas: "toolbar toolbar toolbar" "editor dynamic-pane action-bar" "editor dynamic-pane action-bar";
+}
+
+main.web {
+	grid-template-areas: "toolbar toolbar toolbar" "tabbar dynamic-pane action-bar" "editor dynamic-pane action-bar";
+}
+
+header {
+	background: #3c3c3c;
+	grid-area: toolbar;
+	display: grid;
+	grid-template-columns: 140px 1fr 1fr;
+	grid-template-rows: 100%;
+	grid-template-areas: "logo menu actions";
+}
+
+header .logo {
+	user-select: none;
+	grid-area: logo;
+	position: relative;
+	top: 1px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	color: #ddd;
+	font-family: "Roboto", sans-serif;
+	padding: 0 10px;
+	font-size: 15px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: bold;
+}
+
+header .menu {
+	grid-area: menu;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+header .menu .menuItem,
+header .actionItem {
+	position: relative;
+	user-select: none;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 10px;
+	color: #ccc;
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+
+header .submenu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background: #2d2d2d;
+	padding: 10px 0;
+	width: auto;
+	min-width: 200px;
+	font-size: 14px;
+	line-height: 28px;
+	z-index: 2;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+	display: none;
+}
+
+header [data-opens="file-menu"]:focus [data-is="file-menu"],
+/* header [data-opens="file-menu"]:hover [data-is="file-menu"], */
+header [data-opens="edit-menu"]:focus [data-is="edit-menu"],
+/* header [data-opens="edit-menu"]:hover [data-is="edit-menu"], */
+header [data-opens="view-menu"]:focus [data-is="view-menu"]
+/* header [data-opens="view-menu"]:hover [data-is="view-menu"]  */ {
+	display: block;
+}
+
+header .menuItem.run {
+	display: none;
+}
+
+main.web header .menuItem.run {
+	display: flex;
+}
+
+main header .language {
+	border-radius: 999px;
+	background: #252526;
+	border: 4px solid #3c3c3c;
+	position: relative;
+	pointer-events: none;
+	color: #aaa;
+}
+
+main.web header .language {
+	display: none;
+}
+
+header .submenuItem {
+	padding: 0 15px;
+}
+
+header .submenuItem:hover {
+	background: #007acc;
+}
+
+header .menu .menuItem:hover,
+header .menu .menuItem:focus,
+header .actionItem:hover,
+header .actionItem:focus {
+	background: #4d4d4d;
+}
+
+header .actions {
+	grid-area: actions;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+header .actionItem {
+	color: #fff;
+	margin: 2px 3px;
+	height: calc(100% - 4px);
+	background: #5c5c5c;
+	border-radius: 5px;
+}
+
+.tabbar {
+	grid-area: tabbar;
+	background: #2d2d2d;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	display: none;
+}
+
+main.web .tabbar {
+	display: flex;
+}
+
+.tabbar .tab {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 0 15px;
+	min-width: 100px;
+	color: #aaa;
+	font-family: "Roboto", sans-serif;
+	border-top: 3px solid transparent;
+	font-size: 14px;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
+}
+
+.tabbar .tab.active {
+	color: #eee;
+	border-top-color: #007acc;
+	background: #1e1e1e;
+}
+
+.tabbar .tab img {
+	height: 20px;
+	padding-right: 5px;
+}
+
+.tabbar .unsaved {
+	height: 8px;
+	width: 8px;
+	background: #aaa;
+	border-radius: 50%;
+	margin-left: 10px;
+	display: none;
+}
+
+.tabbar .active .unsaved {
+	background: #fff;
+}
+
+.action-bar {
+	grid-area: action-bar;
+	background: #252526;
+}
+
+.editor-wrapper {
+	grid-area: editor;
+	height: 100%;
+	width: 100%;
+	padding-top: 20px;
+	background: #1e1e1e;
+}
+
+.editor {
+	height: 100%;
+	width: 100%;
+}
+
+.editor [class^="mtk"] {
+	font-family: "Fira Code", monospace;
+}
+
+.dynamic-pane {
+	grid-area: dynamic-pane;
+	background: #fff;
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 35px 1fr;
+	grid-template-areas: "d-tabbar" "d-content";
+	border-left: 5px solid #2d2d2d;
+}
+
+.dtabbar {
+	grid-area: d-tabbar;
+	background: #2d2d2d;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.dtab {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 15px;
+	min-width: 100px;
+	color: #aaa;
+	font-family: "Roboto", sans-serif;
+	border-top: 3px solid transparent;
+	border-top-color: transparent;
+	font-size: 14px;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
+}
+
+.dtab.active {
+	color: #eee;
+	border-top-color: #007acc;
+	background: #1e1e1e;
+}
+
+#ouputWindow {
+	height: 100%;
+	width: 100%;
+}
+
+.dynamic.chat {
+	display: none;
+	background: #1e1e1e;
+	overflow: auto;
+}
+
+.dynamic.chat #parent {
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 1fr 40px;
+	grid-template-areas: "messages" "msgForm";
+	height: 100%;
+	width: 100%;
+}
+
+.dynamic.chat #messages {
+	grid-area: messages;
+	height: 100%;
+	overflow: auto;
+}
+
+.dynamic.chat .message {
+	font-family: "Roboto", sans-serif;
+	font-size: 1rem;
+	color: #ddd;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+.dynamic.chat .message .user {
+	font-size: 0.8rem;
+	line-height: 1.5rem;
+	color: #ccc;
+}
+
+.dynamic.chat #chat-msg-form {
+	grid-area: msgForm;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: stretch;
+	border-bottom: 3px solid transparent;
+	padding: 0 5px;
+}
+
+.dynamic.chat #chat-msg-form input {
+	height: 100%;
+	width: 100%;
+	background: transparent;
+	color: #eee;
+	border: none;
+	font-family: "Roboto", sans-serif;
+	font-size: 1rem;
+	padding: 10px;
+	border-bottom: 2px solid transparent;
+	transition: border-bottom-color 0.2s ease;
+}
+
+.dynamic.chat #chat-msg-form input:focus {
+	outline: none;
+	border-bottom-color: #007acc;
+}
+
+.dynamic.chat #chat-msg-form button {
+	background: transparent;
+	border: none;
+	color: #007acc;
+	font-family: "Roboto", sans-serif;
+	font-size: 1rem;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.dynamic.people {
+	display: none;
+	background: #1e1e1e;
+	padding-top: 10px;
+}
+
+.dynamic.people .user {
+	color: #ccc;
+	font-family: "Roboto", sans-serif;
+	font-size: 1rem;
+	padding: 10px 20px;
+	border-bottom: 1px solid #5c5c5c;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.dynamic.people .user:hover {
+	background: #5c5c5c;
+}
+
+.dynamic.settings {
+	display: none;
+	background: #1e1e1e;
+}
+
+.dynamic.output-wrapper,
+[data-opens-pane=".output-wrapper"] {
+	display: none;
+}
+
+main.web .dynamic.output-wrapper {
+	display: block;
+}
+
+main.web [data-opens-pane=".output-wrapper"] {
+	display: flex;
+}

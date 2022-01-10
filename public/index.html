@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles.css" />
+		<script src="lib/randomStringGen.js"></script>
+		<script src="js/home.js" defer></script>
+		<title>StreamCode</title>
+	</head>
+	<body>
+		<section class="centered">
+			<h1>StreamCode</h1>
+			<div class="btn-group">
+				<button class="btn new-codeshare" onclick="startCodeshare()">
+					New Stream
+				</button>
+				<button class="btn join-codeshare" onclick="joinCodeshare()">
+					Join Stream
+				</button>
+			</div>
+		</section>
+		<div class="modal-backdrop">
+			<div class="modal">
+				<div class="modal-header">
+					<h2>Choose a language</h2>
+				</div>
+				<div class="modal-content">
+					<form>
+						<select name="lang" id="lang">
+							<option value="web">HTML, CSS, JS</option>
+							<option value="py">Python</option>
+							<option value="java">Java</option>
+							<option value="cs">C#</option>
+							<option value="md">Markdown</option>
+							<option value="txt">Plain Text</option>
+						</select>
+						<button class="btn" type="submit">Go</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="modal-backdrop" id="username-modal">
+			<div class="modal">
+				<div class="modal-header">
+					<h2 class="modal">Enter your username</h2>
+				</div>
+				<div class="modal-content">
+					<form>
+						<input type="text" placeholder="Username" />
+						<button class="btn" type="submit">Go</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="modal-backdrop" id="join-stream-modal">
+			<div class="modal">
+				<div class="modal-header">
+					<h2 class="modal">Enter your username</h2>
+				</div>
+				<div class="modal-content">
+					<form>
+						<input type="text" placeholder="Username" />
+						<button class="btn" type="submit">Go</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

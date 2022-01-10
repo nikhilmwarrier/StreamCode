@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../lib/prism/prism-vsc-dark-plus.css" />
+		<link rel="stylesheet" href="styles.css" />
+		<script defer src="../lib/prism/prism.js"></script>
+		<script defer src="preview.js"></script>
+		<title>Preview</title>
+	</head>
+	<body>
+		<main>
+			<div class="action-bar">
+				<button class="item active run">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="24px"
+						viewBox="0 0 24 24"
+						width="24px"
+						fill="#FFFFFF"
+						class="play-arrow"
+					>
+						<path d="M0 0h24v24H0z" fill="none" />
+						<path d="M8 5v14l11-7z" />
+					</svg>
+				</button>
+				<button class="item chat">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="24px"
+						viewBox="0 0 24 24"
+						width="24px"
+						fill="#FFFFFF"
+					>
+						<path d="M0 0h24v24H0z" fill="none" />
+						<path
+							class="chat-icon"
+							d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"
+						/>
+					</svg>
+				</button>
+				<button class="item people">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						height="24px"
+						viewBox="0 0 24 24"
+						width="24px"
+						fill="#FFFFFF"
+					>
+						<path d="M0 0h24v24H0z" fill="none" />
+						<path
+							class="people-icon"
+							d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+						/>
+					</svg>
+				</button>
+				<div class="spacer"></div>
+				<button class="item mic">
+					<img src="../res/icons/mic_white.svg" alt="Mic Off" />
+				</button>
+				<button class="item leave">
+					<img src="../res/icons/call_end.svg" alt="Leave" />
+				</button>
+			</div>
+			<div class="dynamic-pane">
+				<iframe frameborder="0" id="output" name="outputWindow"></iframe>
+			</div>
+			<div class="code-tabbar">
+				<div class="tab active" data-opens="pre.language-html">
+					<img src="../res/icons/html.svg" aria-hidden="true" height="20px" />
+					HTML
+				</div>
+				<div class="tab" data-opens="pre.language-css">
+					<img src="../res/icons/css.svg" aria-hidden="true" height="20px" />CSS
+				</div>
+				<div class="tab" data-opens="pre.language-javascript">
+					<img
+						src="../res/icons/js.svg"
+						aria-hidden="true"
+						height="20px"
+					/>JavaScript
+				</div>
+			</div>
+			<div id="code">
+				<pre class="active language-html"><code id="preview-html"></code></pre>
+
+				<pre class="language-css"><code id="preview-css"></code></pre>
+
+				<pre class="language-javascript"><code id="preview-js"></code></pre>
+			</div>
+		</main>
+	</body>
+</html>

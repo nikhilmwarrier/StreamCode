@@ -1,0 +1,124 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	font-family: "Roboto", sans-serif;
+	background: #1e1e1e;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.centered {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+}
+
+.centered > * {
+	padding: 30px;
+}
+
+.btn {
+	background: #0072be;
+	color: #fff;
+	border: none;
+	font-size: 1rem;
+	font-family: "Roboto", sans-serif;
+	padding: 0.5rem 1rem;
+	margin: 10px;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	transition: all 0.1s;
+}
+
+.btn.join-codeshare {
+	background: #ddd;
+	color: #333;
+}
+
+.btn:hover {
+	background: #007dd1;
+}
+
+.btn.join-codeshare:hover {
+	background: #fff;
+}
+
+h1 {
+	font-family: "Roboto", sans-serif;
+	text-align: center;
+	color: #007acc;
+	font-weight: normal;
+	font-size: 3rem;
+}
+
+.modal-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	display: none;
+}
+
+.modal {
+	background: #333;
+	color: #fff;
+	padding: 2rem;
+	border-radius: 5px;
+	width: 400px;
+	max-width: 90%;
+	max-height: 90%;
+	overflow: auto;
+	font-family: "Roboto", sans-serif;
+}
+
+.modal h2 {
+	font-family: "Roboto", sans-serif;
+	font-weight: normal;
+	font-size: 1.8rem;
+	line-height: 2rem;
+	padding: 0;
+}
+
+.modal form {
+	padding: 1.5rem 0;
+}
+
+.modal select,
+.modal input {
+	background: transparent;
+	border: 1px solid #aaa;
+	color: #fff;
+	font-size: 1rem;
+	font-family: "Roboto", sans-serif;
+	padding: 0.4rem 0.8rem;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	transition: all 0.1s;
+	border-radius: 0px;
+}
+
+.modal input {
+	cursor: text;
+}
+
+.modal select:focus,
+.modal input:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px #007dd1;
+	border-color: #0072be;
+}

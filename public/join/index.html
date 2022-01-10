@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>StreamCode</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- <link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/> -->
+		<link rel="stylesheet" href="styles.css" />
+		<script src="../socket.io/socket.io.js"></script>
+		<script defer src="../lib/monaco/min/vs/loader.js"></script>
+		<!-- <script defer src="lib/emmet-monaco.min.js"></script> -->
+		<script defer src="../lib/emmet-monaco.min.js"></script>
+		<script defer src="../lib/randomStringGen.js"></script>
+		<script defer src="../js/editor.js"></script>
+		<script defer src="../../js/runCode.js"></script>
+		<script defer src="../js/keyBindings.js"></script>
+		<script defer src="../js/chat.js"></script>
+		<script defer src="../js/socketManager.js"></script>
+	</head>
+	<body onload="run()">
+		<main>
+			<header>
+				<!-- <button class="btn" id="run" onclick="run()">Run</button> -->
+				<div class="logo">StreamCode</div>
+				<div class="menu">
+					<div class="menuItem" data-opens="file-menu" tabindex="0">
+						File
+						<div class="submenu" data-is="file-menu">
+							<div class="submenuItem">Submenu Item 1</div>
+							<div class="submenuItem">Submenu Item 2</div>
+							<div class="submenuItem">Submenu Item 3</div>
+						</div>
+					</div>
+					<div class="menuItem" tabindex="0" data-opens="edit-menu">
+						Edit
+						<div class="submenu" data-is="edit-menu">
+							<div class="submenuItem">Submenu Item 1</div>
+							<div class="submenuItem">Submenu Item 2</div>
+							<div class="submenuItem">Submenu Item 3</div>
+						</div>
+					</div>
+					<div class="menuItem" tabindex="0" data-opens="view-menu">
+						View
+						<div class="submenu" data-is="view-menu">
+							<div class="submenuItem">Submenu Item 1</div>
+							<div class="submenuItem">Submenu Item 2</div>
+							<div class="submenuItem">Submenu Item 3</div>
+						</div>
+					</div>
+					<div class="menuItem run" tabindex="0" onclick="run()">Run</div>
+					<div class="menuItem language">Loading...</div>
+				</div>
+				<div class="actions">
+					<div class="actionItem mic mic-off">Unmute</div>
+					<div class="actionItem" onclick="window.location.href = '/'">
+						Leave
+					</div>
+				</div>
+			</header>
+			<div class="action-bar"></div>
+			<div class="tabbar">
+				<div class="tab active" data-opens-editor="html">
+					<img src="../res/icons/html.svg" aria-hidden="true" />
+					HTML
+					<span class="unsaved html-unsaved"></span>
+				</div>
+				<div class="tab" data-opens-editor="css">
+					<img src="../res/icons/css.svg" aria-hidden="true" />
+					CSS
+					<span class="unsaved css-unsaved"></span>
+				</div>
+				<div class="tab" data-opens-editor="js">
+					<img src="../res/icons/js.svg" aria-hidden="true" />
+					JavaScript
+					<span class="unsaved js-unsaved"></span>
+				</div>
+			</div>
+			<div class="editor-wrapper">
+				<div class="editor" id="editor"></div>
+			</div>
+			<div class="dynamic-pane">
+				<div class="dtabbar">
+					<div class="dtab active" data-opens-pane=".output-wrapper">
+						Output
+					</div>
+					<div class="dtab" data-opens-pane=".dynamic.chat">Chat</div>
+					<div class="dtab" data-opens-pane=".dynamic.people">People</div>
+					<div class="dtab" data-opens-pane=".dynamic.settings">Settings</div>
+				</div>
+				<div class="dynamic output-wrapper">
+					<iframe frameborder="0" name="outputWindow" id="ouputWindow"></iframe>
+				</div>
+				<div class="dynamic chat">
+					<div id="parent">
+						<div id="messages"></div>
+						<form id="chat-msg-form">
+							<input type="text" placeholder="Type a message" />
+							<button type="submit">Send</button>
+						</form>
+					</div>
+				</div>
+				<div class="dynamic people">
+					<div class="user" style="pointer-events: none">Loading...</div>
+				</div>
+				<div class="dynamic settings">//Todo: Add Settings</div>
+			</div>
+		</main>
+	</body>
+</html>
